@@ -100,6 +100,11 @@ Fixed &Fixed::operator++(){
     return(*this);
 }
 
+
+/*
+    Bu fonksiyon ön ek (prefix) şeklinde -- operatörünü aşırı yükler. Ön ek operatörü, 
+    değeri azaltmadan önce mevcut nesnenin değerini azaltır ve daha sonra aynı nesnenin referansını döndürür.
+*/
 Fixed &Fixed::operator--(){
     this->fixedValue--;
     return(*this);
@@ -111,12 +116,21 @@ Fixed Fixed::operator++(int){
     return ret;
 }
 
+
+/*
+    Bu fonksiyon son ek (postfix) şeklinde -- operatörünü aşırı yükler. Son ek operatörü, mevcut nesnenin değerini kopyalar 
+    ve daha sonra mevcut nesnenin değerini azaltır. Kopyalanan değeri taşıyan bir geçici nesneyi döndürür.
+*/
 Fixed Fixed::operator--(int){
     Fixed ret(this->toFloat());
     this->fixedValue--;
     return ret;
 }
 
+
+/*
+    döndürülen referans üzerinden nesnenin değerini değiştirebilirsiniz
+*/
 Fixed	&Fixed::max(Fixed& a, Fixed& b) {
 	if (a.getRawBits() >= b.getRawBits())
 		return (a);
@@ -129,6 +143,9 @@ Fixed	&Fixed::min(Fixed& a, Fixed& b) {
 	return (b);
 }
 
+/*
+    nesnenin degeri 'const' dolayisiyla degistirilemez.
+*/
 const Fixed	&Fixed::max(const Fixed&a, const Fixed& b) {
 	if (a.getRawBits() >= b.getRawBits())
 		return (a);

@@ -10,10 +10,13 @@ Fixed::Fixed(const Fixed& copy){
     *this = copy;
 }
 
-
+/*
+    Bu operatörün içinde, self-assignment'ı önlemek için bir kontrol yapılır (if (this != &other)), 
+    ardından değerler kopyalanır ve son olarak *this ile kendi nesnesinin referansı döndürülür.
+*/
 Fixed &Fixed::operator=(const Fixed& fixed){
     std::cout << "Copy assignment operator called" << std::endl;
-    if(this != &fixed){
+    if(this != &fixed){// kendi kendine atamayi onlemek icin kontrol
         this->fixedValue = fixed.getRawBits();
     }
     return *this;
