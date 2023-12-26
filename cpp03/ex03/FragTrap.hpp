@@ -1,10 +1,8 @@
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap{
-
-    private:
-        FragTrap();
+class FragTrap : virtual public ClapTrap{
     public:
+        FragTrap();
         FragTrap(std::string name);
         FragTrap(const FragTrap& copy);
         FragTrap &operator=(const ClapTrap& copy);
