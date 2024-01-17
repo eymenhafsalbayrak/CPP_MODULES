@@ -1,11 +1,11 @@
  #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0){
-    std::cout << "Paramaterized constructor called" << std::endl;
+    std::cout << "ClapTrap Paramaterized constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy){
@@ -22,13 +22,16 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& copy){
 
 
 ClapTrap::~ClapTrap(){
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target){
 
     if(this->hitPoints <= 0)
+    {
+        std::cout << "i am dead bij, i can't do anything" << std::endl;
         return ;
+    }
     if(this->energyPoints <= 0){
         std::cout << "ClapTrap " << this->getName() << " have no energy points to attack!" << std::endl;
         return ;    
@@ -42,9 +45,12 @@ void ClapTrap::attack(const std::string& target){
 void ClapTrap::takeDamage(unsigned int amount){
 
     if(this->hitPoints <= 0)
+    {
+        std::cout << "i am dead bij, i can't do anything" << std::endl;
         return ;
+    }
     if(this->hitPoints <= (int)amount){
-        std::cout << "ClapTrap " << this->getName() << " is died!" << std::endl;
+        std::cout << "ClapTrap " << this->getName() << " is dead!" << std::endl;
         this->hitPoints -= amount;
         return ;
     }

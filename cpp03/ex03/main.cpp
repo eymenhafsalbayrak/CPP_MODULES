@@ -3,7 +3,7 @@
 int main() {
 	DiamondTrap a("Zombozo");
 	DiamondTrap b("Samurai Jack");
-	DiamondTrap c(a);
+	DiamondTrap c = a;
 
 	a.highFivesGuys();
 	a.guardGate();

@@ -18,7 +18,7 @@ ScavTrap::ScavTrap(const ScavTrap& copy){
     *this = copy;
 }
 
-ScavTrap &ScavTrap::operator=(const ClapTrap& copy){
+ScavTrap &ScavTrap::operator=(const ScavTrap& copy){
     this->setName(copy.getName());
     this->setEnergyPoints(copy.getEnergyPoints());
     this->setHitPoints(copy.getHitPoints());

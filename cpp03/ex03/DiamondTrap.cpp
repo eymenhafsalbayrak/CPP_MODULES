@@ -6,15 +6,18 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), Sca
     this->FragTrap::setHitPoints(100);
     this->ScavTrap::setEnergyPoints(50);
     this->FragTrap::setAttackDamage(20);
+    std::cout << "asd" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap(){}
 
 DiamondTrap::DiamondTrap(const DiamondTrap& copy){
+    std::cout << "DiamondTrap Copy Constructor called" << std::endl;
     *this = copy;
 }
 
-DiamondTrap &DiamondTrap::operator=(const ClapTrap& copy){
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap& copy){
+    std::cout << "DiamondTrap Copy Assignment operator called" << std::endl;
     this->setName(copy.getName());
     this->setEnergyPoints(copy.getEnergyPoints());
     this->setHitPoints(copy.getHitPoints());

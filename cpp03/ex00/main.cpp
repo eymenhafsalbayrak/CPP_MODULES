@@ -12,7 +12,7 @@ int main(){
     clap.attack("Mooncake");
 
     trap.beRepaired(3);
-    for(int i = 0; i < 7; i++)
+    for(int i = 0; i < 12; i++)
         trap.attack("Avocato");
     trap.beRepaired(3);
 

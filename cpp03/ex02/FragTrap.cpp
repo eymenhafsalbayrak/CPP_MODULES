@@ -8,8 +8,8 @@ FragTrap::~FragTrap(){
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name){
     this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
 
     std::cout << "FragTrap constructor called" << std::endl;
 }
@@ -18,7 +18,7 @@ FragTrap::FragTrap(const FragTrap& copy){
     *this = copy;
 }
 
-FragTrap &FragTrap::operator=(const ClapTrap& copy){
+FragTrap &FragTrap::operator=(const FragTrap& copy){
     this->setName(copy.getName());
     this->setEnergyPoints(copy.getEnergyPoints());
     this->setHitPoints(copy.getHitPoints());
