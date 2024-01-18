@@ -1,6 +1,8 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(){}
+FragTrap::FragTrap(){
+    std::cout << "FragTrap Default constructor called" << std::endl;
+}
 
 FragTrap::~FragTrap(){
     std::cout << "FragTrap Destructor called" << std::endl;
@@ -15,10 +17,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name){
 }
 
 FragTrap::FragTrap(const FragTrap& copy){
+    std::cout << "FragTrap Copy Constructor called" << std::endl;
     *this = copy;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap& copy){
+    std::cout << "FragTrap Copy Assignment operator called" << std::endl;
     this->setName(copy.getName());
     this->setEnergyPoints(copy.getEnergyPoints());
     this->setHitPoints(copy.getHitPoints());

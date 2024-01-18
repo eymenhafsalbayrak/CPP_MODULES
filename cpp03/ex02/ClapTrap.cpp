@@ -9,10 +9,12 @@ ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(1
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy){
+    std::cout << "ClapTrap Copy Constructor called" << std::endl;
     *this = copy;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap& copy){
+    std::cout << "ClapTrap Copy Assignment operator called" << std::endl;
     this->name = copy.getName();
     this->hitPoints = copy.getHitPoints();
     this->energyPoints = copy.getEnergyPoints();

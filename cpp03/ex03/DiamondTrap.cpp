@@ -1,5 +1,9 @@
 #include "DiamondTrap.hpp"
 
+DiamondTrap::DiamondTrap(){
+    std::cout << "DiamondTrap Default constructor called" << std::endl;
+}
+
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name){
     this->name = name;
     this->ClapTrap::setName(name + "_clap_name");
@@ -7,9 +11,12 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), Sca
     this->ScavTrap::setEnergyPoints(50);
     this->FragTrap::setAttackDamage(20);
     std::cout << "asd" << std::endl;
+     std::cout << "DiamondTrap Constructor called" << std::endl;
 }
 
-DiamondTrap::~DiamondTrap(){}
+DiamondTrap::~DiamondTrap(){
+     std::cout << "DiamondTrap Destructor called" << std::endl;
+}
 
 DiamondTrap::DiamondTrap(const DiamondTrap& copy){
     std::cout << "DiamondTrap Copy Constructor called" << std::endl;
