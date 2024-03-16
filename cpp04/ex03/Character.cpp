@@ -44,15 +44,44 @@ std::string const &Character::getName()const{
 }
 
 void Character::equip(AMateria* m){
-	if(!m)
+	int i = 0;
+
+	if(!m){
+		std::cout << "tried to equip but Materia is empty" << std::endl;
 		return ;
-	
+	}
+	while (this->inventory[i] != 0){
+		i++;
+	}
+	if (i > 3){
+		std:: cout << "inverntory is full, you can not add something anymore" << std::endl;
+		return ;
+	}
+	std::cout << this->getName() << " equip the " << m->getType() << " at slot " << i << std::endl;
+	this->inventory[i] = m;
 }
 
 void Character::unequip(int idx){
-
+	if(idx < 0 || idx > 3){
+		std::cout << "Index out of range" << std::endl;
+		return ;
+	}
+	if (this->inventory[idx] == 0){
+		std::cout << "There is no Materia to unequip" << std::endl;
+		return ;
+	}
+	std::cout << this->getName() << " unequip the " << this->inventory[idx]->getType() << " at slot " << idx << std::endl;
+	this->inventory[idx] = 0;
 }
 
 void Character::use(int idx, ICharacter& target){
-
+	if (idx < 0 || idx > 3){
+		std::cout << "index out of range" << std::endl;
+		return ;
+	}
+	if(!this->inventory[idx]){
+		std::cout << "nothing found the use" << std::endl;
+		return ;
+	}
+	this->inventory[idx]->use(target);
 }
