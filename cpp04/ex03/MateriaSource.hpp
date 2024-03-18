@@ -8,4 +8,7 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource(const MateriaSource& copy);
 		MateriaSource &operator=(const MateriaSource& copy);
 
+        void learnMateria(AMateria);
+        AMateria* createMateria(std::string const &type);
+
 };
