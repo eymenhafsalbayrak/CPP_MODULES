@@ -1,10 +1,6 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
 
-Character::Character(){
-	std::cout << "Character Default Constructor" << std::endl;
-}
-
 Character::Character(std::string name): name(name){
 	std::cout << "Character Parameterized Constructor" << std::endl;
 	std::cout << "Character " << name << " created." << std::endl;

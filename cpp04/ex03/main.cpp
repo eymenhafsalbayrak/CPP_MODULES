@@ -6,8 +6,8 @@
 int main(){
 
     IMateriaSource* src = new MateriaSource();
-    // src->learnMateria(new Ice());
-    // src->learnMateria(new Cure());
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
     ICharacter* me = new Character("me");
     AMateria* tmp;
     tmp = src->createMateria("ice");
