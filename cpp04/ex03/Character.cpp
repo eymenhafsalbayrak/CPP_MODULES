@@ -15,7 +15,7 @@ Character::~Character(){
 		if(this->inventory[i])
 			delete this->inventory[i];
 	}
-	std::cout << "Character " << name << "deleted." << std::endl;
+	std::cout << "Character " << name << " deleted." << std::endl;
 }
 
 Character::Character(const Character& copy){

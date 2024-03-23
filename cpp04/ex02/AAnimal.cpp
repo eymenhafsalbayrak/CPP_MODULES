@@ -21,7 +21,7 @@ AAnimal::AAnimal(const AAnimal& copy){
 AAnimal &AAnimal::operator=(const AAnimal& copy){
     std::cout << "AAnimal copy assignment operator called" << std::endl;
     this->type = copy.type;
-    return(*this);
+    return(*this);//dondurdugun sey degisirse ana class'tan degistirebilirsin
 }
 
 void AAnimal::setType(std::string newType){
