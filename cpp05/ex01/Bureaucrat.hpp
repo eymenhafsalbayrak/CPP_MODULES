@@ -3,6 +3,8 @@
 #include <string>
 #include <exception>
 
+class Form;
+
 class Bureaucrat {
 
     private:
@@ -29,6 +31,8 @@ class Bureaucrat {
         class GradeTooLowException : public std::exception{
             const char* what() const throw();
         };
+
+        void signForm(Form& form);
 };
 
 std::ostream &operator<<(std::ostream& o, const Bureaucrat& b);
