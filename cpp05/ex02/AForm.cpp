@@ -1,57 +1,57 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::~Form(){}
-Form::Form(std::string name, const int grade_sign, const int grade_exec) : name(name), grade_sign(grade_sign), grade_exec(grade_exec){
+AForm::~AForm(){}
+AForm::AForm(std::string name, const int grade_sign, const int grade_exec) : name(name), grade_sign(grade_sign), grade_exec(grade_exec){
     this->sign = 0;
     if (grade_sign < 1 || grade_exec < 1)
         throw GradeTooHighException();
     else if (grade_sign > 150 || grade_exec > 150)
         throw GradeTooLowException();
 }
-Form::Form(const Form& copy): name(copy.getName()), grade_sign(copy.getGradeSign()), grade_exec(copy.getGradeExec()){
+AForm::AForm(const AForm& copy): name(copy.getName()), grade_sign(copy.getGradeSign()), grade_exec(copy.getGradeExec()){
     *this = copy;
 }
-Form &Form::operator=(const Form& copy){
+AForm &AForm::operator=(const AForm& copy){
     this->sign = copy.getSign();
     return (*this);
 }
 
-std::string Form::getName() const{
+std::string AForm::getName() const{
     return(this->name);
 }
 
-int Form::getGradeSign() const{
+int AForm::getGradeSign() const{
     return (this->grade_sign);
 }
 
-int Form::getGradeExec() const{
+int AForm::getGradeExec() const{
     return (this->grade_exec);
 }
 
-bool Form::getSign() const{
+bool AForm::getSign() const{
     return (this->sign);
 }
 
-void Form::setSign(bool sign){
+void AForm::setSign(bool sign){
     this->sign = sign;
 }
 
-const char* Form::GradeTooHighException::what() const throw(){
+const char* AForm::GradeTooHighException::what() const throw(){
     return ("Form: grade is too high!");
 }
 
-const char* Form::GradeTooLowException::what() const throw(){
+const char* AForm::GradeTooLowException::what() const throw(){
     return ("Form: grade is too low!");
 }
 
-std::ostream& operator<<(std::ostream& o, const Form& f) {
+std::ostream& operator<<(std::ostream& o, const AForm& f) {
     o << f.getName() << ", form grade " << f.getGradeSign() << ", form exec " << f.getGradeExec() <<
             ", form sign :" << (f.getSign() ? "true" : "false"); 
     return o;
 }
 
-bool Form::beSigned(Bureaucrat& b_type){
+bool AForm::beSigned(Bureaucrat& b_type){
 
     if(b_type.getGrade() <= this->getGradeSign())
         return (this->sign = 1);
