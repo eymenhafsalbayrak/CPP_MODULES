@@ -38,8 +38,9 @@ class AForm {
         };
 
 		bool beSigned(Bureaucrat& b_type);
-		void execute(Bureaucrat const & executor) const;
 		virtual void specificExecute(void) const = 0;
+		
+		void execute(Bureaucrat const & executor) const;
 };
 
 
