@@ -4,28 +4,24 @@
 #include "Bureaucrat.hpp"
 
 int main() {
-    {
-        ShrubberyCreationForm s;
-        s.specificExecute();
 
-        RobotomyRequestForm r;
-        r.specificExecute();
+    ShrubberyCreationForm s;
+    s.specificExecute();
 
-        Bureaucrat b("Martini", 25);
-        Bureaucrat c("Jay", 1);
+    RobotomyRequestForm r;
+    r.specificExecute();
 
-        AForm *f = new RobotomyRequestForm("Marvin");
-        PresidentialPardonForm puf("Camelot");
+    Bureaucrat b("Martini", 25);
+    Bureaucrat c("Jay", 1);
 
-        b.signAForm(*f);
-        b.signAForm(puf);
-
-        b.executeForm(*f);
-        b.executeForm(puf);
-
-        c.executeForm(puf);
-
-        delete f;
-    }
+    AForm *f = new RobotomyRequestForm("Marvin");
+    PresidentialPardonForm puf("Camelot");
+    b.signAForm(*f);
+    b.signAForm(puf);
+    b.executeForm(*f);
+    b.executeForm(puf);
+    c.executeForm(puf);
+    
+    delete f;
 }
 
