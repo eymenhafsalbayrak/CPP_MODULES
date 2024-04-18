@@ -4,19 +4,21 @@
 void ScalarConverter::convert(const std::string& arg){
 	if(checkPseudoLiteralsDouble(arg) || checkPseudoLiteralsFloat(arg))
 		return ;
-	// if(!findType(arg))
-	// 	printLiterals("impossible", "impossible", "impossible", "impossible");
+	if(!findType(arg)){
+		std::cout << "noliyor" << std::endl;
+		printLiterals("impossible", "impossible", "impossible", "impossible");
+	}
 }
 
-void ScalarConverter::printLiterals(const std::string &_char_,
-					const std::string &_int_,
-					const std::string _float_,
-					const std::string _double_)
+void ScalarConverter::printLiterals(const std::string &_char,
+					const std::string &_int,
+					const std::string _float,
+					const std::string _double)
 {
-	std::cout << "char: " << _char_ << std::endl;
-	std::cout << "int: " << _int_ << std::endl;
-	std::cout << "float: " << _float_ << std::endl;
-	std::cout << "double: " << _double_ << std::endl;
+	std::cout << "char: " << _char << std::endl;
+	std::cout << "int: " << _int << std::endl;
+	std::cout << "float: " << _float << std::endl;
+	std::cout << "double: " << _double << std::endl;
 }
 
 int ScalarConverter::checkPseudoLiteralsFloat(const std::string& arg){
@@ -37,14 +39,12 @@ int ScalarConverter::checkPseudoLiteralsDouble(const std::string& arg){
 }
 
 int ScalarConverter::isChar(const std::string &arg){
-	if(arg.size() == 1 && isascii(arg[0]) && !isdigit(arg[0])){
 		char c = arg[0];
 		std::cout << "char: '" << c << "'" << std::endl;
 		std::cout << "int: " << static_cast<int>(c) << std::endl;
 		std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 		std::cout << "double: " << static_cast<double>(c) << ".0" <<std::endl;
 		return 1;
-	}
 	return 0;
 }
 
@@ -104,10 +104,10 @@ int ScalarConverter::isFloat(const std::string &arg){
 			std::cout << "float: " << fnumber << ".0f" << std::endl;
 			std::cout << "double: " << static_cast<double>(fnumber) << ".0" << std::endl;
 		}
-		return true;
+		return 1;
 
 	}
-	return false;
+	return 0;
 
 }
 
@@ -136,10 +136,17 @@ int ScalarConverter::isDouble(const std::string &arg){
 		std::cout << "float: " << static_cast<float>(dnumber) << ".0f" << std::endl;
 		std::cout << "double: " << dnumber << ".0" << std::endl;
 	}
-	return true;
+	return 1;
 
 }
-// int ScalarConverter::findType(const std::string& arg){
-
-// }
+/*
+dizenin içinde sadece bir nokta olduğunu ve
+ bu noktanın öncesinde ve sonrasında geçerli sayısal karakterlerin olduğunu kontrol eder.
+*/
+int ScalarConverter::findType(const std::string& arg)
+{
+	if(arg.size() == 1 && isascii(arg[0]) && !isdigit(arg[0]))
+		isChar(arg);
+	return 1;
+}
 

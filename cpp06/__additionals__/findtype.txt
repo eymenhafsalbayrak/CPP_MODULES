@@ -1,0 +1,15 @@
+findType fonksiyonu, dizenin hangi türde bir sayıyı temsil ettiğini bulmaya çalışır.
+İlk olarak, eğer dize bir karakteri temsil ediyorsa (isChar fonksiyonu ile kontrol edilir), 1 değeri döndürülür. 
+Eğer dize içinde nokta ('.') veya bilimsel gösterim karakteri ('e' veya 'E') bulunuyorsa, bu durumda dizenin float veya double tipinde 
+bir sayıyı temsil edip etmediğini kontrol eder. Bu kontrolü yaparken, dizenin içinde sadece bir nokta olduğunu ve
+ bu noktanın öncesinde ve sonrasında geçerli sayısal karakterlerin olduğunu kontrol eder. Eğer bu şartlar sağlanıyorsa ve 
+ dize hem float hem de double tipinde bir sayıyı temsil ediyorsa, 1 değeri döndürülür. 
+ Eğer dize bir tamsayıyı temsil ediyorsa (isInt fonksiyonu ile kontrol edilir), 1 değeri döndürülür. Aksi halde, 0 değeri döndürülür.
+
+isDouble fonksiyonu, verilen dizenin double türünde bir sayıyı temsil edip etmediğini kontrol eder. 
+Öncelikle, verilen dizenin double bir değere dönüştürülüp dönüştürülemeyeceği kontrol edilir. 
+Ardından, eğer dize bir ASCII karakterine dönüştürülebiliyorsa (yani basılabilir bir karakterse), karakter ekrana yazdırılır. 
+Eğer dize bir tamsayı aralığında ise, bu tamsayı ekrana yazdırılır. 
+Daha sonra, dize bir float veya double türünde bir sayıyı tam olarak temsil ediyorsa, hem float hem de double olarak dize ekrana yazdırılır. 
+Eğer dize bir noktadan sonra başka bir karakter içeriyorsa (yani dize bir tam sayıyı değil de bir ondalıklı sayıyı temsil ediyorsa), 
+dize float olarak ekrana yazdırılırken double olarak da ekrana yazdırılır. Sonuç olarak, bu fonksiyon her zaman 1 değerini döndürür.

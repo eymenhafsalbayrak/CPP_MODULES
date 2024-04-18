@@ -21,10 +21,10 @@ class ScalarConverter{
 		static int isFloat(const std::string& arg);
 		static int isDouble(const std::string& arg);
 
-		static void printLiterals(const std::string &_char_,
-								  const std::string &_int_,
-								  const std::string _float_,
-								  const std::string _double_);
+		static void printLiterals(const std::string &_char,
+								  const std::string &_int,
+								  const std::string _float,
+								  const std::string _double);
 		
 		static int checkPseudoLiteralsFloat(const std::string& arg);
 		static int checkPseudoLiteralsDouble(const std::string& arg);
