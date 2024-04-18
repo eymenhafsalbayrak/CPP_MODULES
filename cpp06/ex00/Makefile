@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
-TARGET = execute
+TARGET = convert
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@

@@ -1,0 +1,17 @@
+Gelen bir argümanın float bir değer olup olmadığını kontrol etmek için aşağıdaki adımları izleyebilirsiniz:
+
+1. Argümanın boş olup olmadığını kontrol edin. Eğer boşsa, kesinlikle bir float değil demektir.
+2. Argümanın her karakterinin sayısal bir karakter veya nokta ('.') olduğunu kontrol edin.
+    Bu, argümanın float bir değer içerdiğini gösterir.
+3. Eğer argümanın ilk karakteri "+" veya "-" işareti ise, bu işaretin yalnızca bir kere geçtiğinden 
+    ve sonraki karakterlerin sayısal veya nokta olduğundan emin olun. 
+    Bu durum, pozitif veya negatif bir float değeri olduğunu gösterir.
+4. Noktanın yalnızca bir kere geçtiğinden ve noktadan önce ve sonra en az bir sayısal karakter olduğundan emin olun. 
+    Ayrıca, noktadan önce ve sonra başka bir nokta olmadığından emin olun. 
+    Bu adım, argümanın float bir sayıyı temsil ettiğini kontrol eder.
+5. Diğer tüm karakterlerin sayısal veya nokta olduğundan emin olun.
+    Eğer değilse, argüman float bir değil demektir.
+
+Bu kontrolleri gerçekleştirdikten sonra, argümanın bir float değerini temsil edip etmediğini belirleyebilirsiniz. 
+Örneğin, "12.34f", "-0.5", "3.14159" gibi değerler float olarak kabul edilebilirken, 
+"abc", "12.34.56", "1.2.3" gibi değerler float olarak kabul edilemez.

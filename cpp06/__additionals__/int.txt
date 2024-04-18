@@ -1,0 +1,9 @@
+
+Argümanın boş olup olmadığını kontrol edin. Eğer boşsa, kesinlikle bir tamsayı değil demektir.
+Argümanın her karakterinin sayısal bir karakter olduğunu kontrol edin. 
+Bu, argümanın tamsayı bir değer içerdiğini gösterir.
+Eğer argümanın ilk karakteri "+" veya "-" işareti ise, bu işaretin yalnızca bir kere geçtiğinden ve 
+sonraki karakterin sayısal olduğundan emin olun. 
+Bu durum, pozitif veya negatif bir tamsayı değeri olduğunu gösterir.
+Diğer tüm karakterlerin sayısal olduğundan emin olun. Eğer değilse, argüman tamsayı değil demektir.
+Örneğin, "123abc" gibi bir değeri tamsayı olarak kabul etmek
