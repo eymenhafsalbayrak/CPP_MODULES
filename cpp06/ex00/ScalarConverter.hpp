@@ -31,3 +31,7 @@ class ScalarConverter{
 		
 
 };
+
+int ft_isdigit(const std::string &tmp);
+int ft_float(const std::string &tmp);
+int ft_double(const std::string &tmp);

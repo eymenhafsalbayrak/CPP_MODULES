@@ -5,7 +5,6 @@ void ScalarConverter::convert(const std::string& arg){
 	if(checkPseudoLiteralsDouble(arg) || checkPseudoLiteralsFloat(arg))
 		return ;
 	if(!findType(arg)){
-		std::cout << "noliyor" << std::endl;
 		printLiterals("impossible", "impossible", "impossible", "impossible");
 	}
 }
@@ -50,13 +49,13 @@ int ScalarConverter::isChar(const std::string &arg){
 
 int ScalarConverter::isInt(const std::string &arg){
 
-	for(size_t i = 0;i < arg.size();++i){
-		if(arg[i] == '+' || arg[i] == '-'){
-			if(arg.size() == 1)
-				return 0;
-			continue;
-		}
-	}
+	// for(size_t i = 0;i < arg.size();++i){
+	// 	if(isdigit(arg[i]) || arg[i] == '+' || arg[i] == '-'){
+	// 		if(arg.size() == 1)
+	// 			return 0;
+	// 		continue;
+	// 	}
+	// }
 
 	if(IS_IN_INT_RANGE(atoll(arg.c_str()))){
 		int inumber = atoi(arg.c_str());
@@ -66,13 +65,12 @@ int ScalarConverter::isInt(const std::string &arg){
 			else
 				std::cout << "char: Non displayable" << std::endl;
 		}
-		else{
+		else
 			std::cout << "char: impossible" << std::endl;
-			std::cout << "int: " << inumber << std::endl;
-			std::cout << "float: " << static_cast<float>(inumber)<< ".0f" << std::endl;
-			std::cout << "double: " << static_cast<double>(inumber) << ".0" << std::endl;
-			return 1;
-		}
+		std::cout << "int: " << inumber << std::endl;
+		std::cout << "float: " << static_cast<float>(inumber)<< ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(inumber) << ".0" << std::endl;
+		return 1;
 	}
 	return 0;	
 }
@@ -147,6 +145,52 @@ int ScalarConverter::findType(const std::string& arg)
 {
 	if(arg.size() == 1 && isascii(arg[0]) && !isdigit(arg[0]))
 		isChar(arg);
+	else if(ft_isdigit(arg))
+		isInt(arg);
+	else if(ft_float(arg))
+		isFloat(arg);
+	else if(ft_double(arg))
+		isDouble(arg);
 	return 1;
 }
 
+int ft_isdigit(const std::string &tmp){
+
+	for(int i = 0;tmp[i];i++){
+		if(!isdigit(tmp[i]) && !(tmp[i] == '+' || tmp[i] == '-'))
+			return 0;
+	}
+	return 1;
+}
+
+int ft_float(const std::string &tmp){
+	if (tmp.size() != 1)
+    {
+        if ((!(tmp[tmp.find('f') + 1]) && isdigit(tmp[tmp.find('f') - 1])) &&  ((tmp.find('.') == std::string::npos) || (tmp.find('.') != std::string::npos && tmp.find('e') == std::string::npos)))
+        {
+            for (int i = 0; tmp[i];i++)
+            {
+                if (tmp[i] != 'f' && tmp[i] != '-' && tmp[i] != '+' && tmp[i] != '.' && tmp[i] != 'e' && tmp[i] != 'E'  && !isdigit(tmp[i]))
+                    return (0);
+            }
+            return (1);
+        }
+    }
+    return (0);
+}
+
+int ft_double(const std::string &tmp){
+	if (tmp.size() != 1)
+    {
+        if (tmp[tmp.find('.') + 1] && tmp[tmp.find('.') - 1] && tmp.find('f') == std::string::npos)
+        {
+            for (int i = 0; tmp[i];i++)
+            {
+                if (tmp[i] != '.' && tmp[i] && tmp[i] != '-' && tmp[i] != '+' && tmp[i] != 'e' && tmp[i] != 'E'  && !isdigit(tmp[i]))
+                    return (0);
+            }
+            return (1);
+        }
+    }
+    return (0);
+}
