@@ -49,13 +49,13 @@ int ScalarConverter::isChar(const std::string &arg){
 
 int ScalarConverter::isInt(const std::string &arg){
 
-	// for(size_t i = 0;i < arg.size();++i){
-	// 	if(isdigit(arg[i]) || arg[i] == '+' || arg[i] == '-'){
-	// 		if(arg.size() == 1)
-	// 			return 0;
-	// 		continue;
-	// 	}
-	// }
+	for(size_t i = 0;i < arg.size();++i){
+		if(isdigit(arg[i]) || arg[i] == '+' || arg[i] == '-'){
+			if(arg.size() == 1)
+				return 0;
+			continue;
+		}
+	}
 
 	if(IS_IN_INT_RANGE(atoll(arg.c_str()))){
 		int inumber = atoi(arg.c_str());
@@ -76,7 +76,7 @@ int ScalarConverter::isInt(const std::string &arg){
 }
 
 int ScalarConverter::isFloat(const std::string &arg){
-	if(arg[arg.size() - 1] == 'f') // argumanin sonuna bakiliyor 2.0f
+	if(arg[arg.size() - 1] == 'f')
 	{
 
 		float fnumber = atof(arg.c_str());
@@ -137,10 +137,7 @@ int ScalarConverter::isDouble(const std::string &arg){
 	return 1;
 
 }
-/*
-dizenin içinde sadece bir nokta olduğunu ve
- bu noktanın öncesinde ve sonrasında geçerli sayısal karakterlerin olduğunu kontrol eder.
-*/
+
 int ScalarConverter::findType(const std::string& arg)
 {
 	if(arg.size() == 1 && isascii(arg[0]) && !isdigit(arg[0]))
