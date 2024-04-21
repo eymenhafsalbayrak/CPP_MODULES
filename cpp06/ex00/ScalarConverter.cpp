@@ -159,9 +159,11 @@ int ScalarConverter::findType(const std::string& arg)
 {
 	if (isChar(arg))
 		return 1;
+
+	// arg.find('.') eger true is yani icinde varsa bana oranin indexini vericek. yoksan npos dondurecek.
 	if (arg.find('.') != std::string::npos || arg.find('e') != std::string::npos || arg.find('E') != std::string::npos)
 	{
-		if (arg.find('.') == std::string::npos)
+		if (arg.find('.') == std::string::npos)//nokta yoksa
 		{
 			for (size_t i = 0; i < arg.size() ; ++i) {
 				if ((i == 0 && (arg[0] == '+' && arg[0] == '-')) || (i == arg.size() - 1 && arg[i] == 'f'))
@@ -178,7 +180,7 @@ int ScalarConverter::findType(const std::string& arg)
 					return 0;
 			}
 		}
-		else
+		else // noktadan sonrasi
 		{
 			for (size_t i = 0; i < arg.find('.'); ++i) {
 				if ((i == 0 && (arg[0] == '+' || arg[0] == '-')) || isdigit(arg[i]))

@@ -1,0 +1,9 @@
+
+--------------------*****************------------------------
+
+uintptr_t -> bir işaretçinin bir tamsayı türüne dönüştürüldüğünde veya bir tamsayının bir işaretçi türüne dönüştürüldüğünde kullanılır. 
+            Özellikle, işaretçileri tamsayılara veya tamsayıları işaretçilere dönüştürürken doğru boyut ve işaretsizlik sınırlarını korumak için kullanılır.
+
+
+reinterpret_cast -> diğer dönüşüm operatörlerinden daha güçlüdür ve daha az kontrol sağlar, risklidir.
+            bir işaretçiyi bir tamsayı türüne veya tam tersine dönüştürmek gibi.

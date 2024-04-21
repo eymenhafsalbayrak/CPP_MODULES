@@ -9,3 +9,21 @@ Yani, en az bir sanal fonksiyonu olan sınıflar arasında dönüşüm yapılabi
 
 bir üst sınıf işaretçisini veya referansını alt sınıf işaretçisine veya 
 referansına dönüştürmek için dynamic_cast kullanılabilir:
+
+ONEMLI!
+dynamic_cast operatörü, çalışma zamanında tür kontrolü yapar.
+Yani, işaretçinin veya referansın işaret ettiği nesnenin gerçek türünü kontrol eder ve 
+uygun dönüşümün yapılabilmesi için bu bilgiyi kullanır.
+Eğer dönüşüm gerçekleştirilebiliyorsa, dynamic_cast operatörü uygun türde bir işaretçi veya referans döndürür. 
+Eğer dönüşüm mümkün değilse ve işaretçi veya referans null ise, dynamic_cast operatörü null işaretçisi veya null referans döndürür. 
+Ancak, dönüşüm mümkün değilse ve işaretçi veya referans null değilse, dynamic_cast operatörü std::bad_cast tipinde bir istisna fırlatır.
+
+
+bir sınıf hiyerarşisindeki türetilmiş sınıfların işaretçi veya referansları üzerinde güvenli bir şekilde işlem yapmak istendiğinde dynamic_cast operatörü tercih edilir
+
+
+dynamic -> run time
+
+
+statik kavramı derleme zamanında belirlenen ve programın çalışma zamanında sabit kalan özellikleri ifade ederken,
+ dinamik kavramı programın çalışma zamanında değişen ve uyarlanabilen özellikleri ifade eder

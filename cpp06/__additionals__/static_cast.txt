@@ -2,6 +2,7 @@
 
 
 donusumun guvenligini saglamaya yardimci olmak icin run-time turu kontrol yoktur.
+compile-time
 
 1.static_cast: Bu operatör, genellikle güvenli ve standart dönüşümler için kullanılır.
 Örneğin, tamsayıları farklı boyutlara dönüştürmek veya türe özel dönüşümleri gerçekleştirmek için kullanılabilir.
