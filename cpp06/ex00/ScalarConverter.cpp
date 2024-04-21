@@ -1,6 +1,21 @@
 #include "ScalarConverter.hpp"
 #include <cstdlib>
 
+
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& copy){
+	*this = copy;
+}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter& copy){
+   if (this != &copy)
+		*this = copy;//??
+   return *this;
+}
+
+ScalarConverter::~ScalarConverter(){}
+
 void ScalarConverter::convert(const std::string& arg){
 	if(checkPseudoLiteralsDouble(arg) || checkPseudoLiteralsFloat(arg))
 		return ;
@@ -38,25 +53,27 @@ int ScalarConverter::checkPseudoLiteralsDouble(const std::string& arg){
 }
 
 int ScalarConverter::isChar(const std::string &arg){
+	if(arg.size() == 1 && isascii(arg[0]) && !isdigit(arg[0])){
 		char c = arg[0];
 		std::cout << "char: '" << c << "'" << std::endl;
 		std::cout << "int: " << static_cast<int>(c) << std::endl;
 		std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 		std::cout << "double: " << static_cast<double>(c) << ".0" <<std::endl;
 		return 1;
+	}
 	return 0;
 }
 
-int ScalarConverter::isInt(const std::string &arg){
-
-	for(size_t i = 0;i < arg.size();++i){
-		if(isdigit(arg[i]) || arg[i] == '+' || arg[i] == '-'){
-			if(arg.size() == 1)
-				return 0;
-			continue;
-		}
-	}
-
+int ScalarConverter::isInt(const std::string &arg){ 
+	for (size_t i = 0; i < arg.size(); ++i) {
+        if (isdigit(arg[i]) || ((arg[i] == '+' || arg[i] == '-') && i == 0))
+        {
+            if (i != 0)
+                continue;
+        }
+        else
+            return 0;
+    }
 	if(IS_IN_INT_RANGE(atoll(arg.c_str()))){
 		int inumber = atoi(arg.c_str());
 		if(isascii(inumber)){
@@ -140,54 +157,55 @@ int ScalarConverter::isDouble(const std::string &arg){
 
 int ScalarConverter::findType(const std::string& arg)
 {
-	if(arg.size() == 1 && isascii(arg[0]) && !isdigit(arg[0]))
-		isChar(arg);
-	else if(ft_isdigit(arg))
-		isInt(arg);
-	else if(ft_float(arg))
-		isFloat(arg);
-	else if(ft_double(arg))
-		isDouble(arg);
-	return 1;
-}
-
-int ft_isdigit(const std::string &tmp){
-
-	for(int i = 0;tmp[i];i++){
-		if(!isdigit(tmp[i]) && !(tmp[i] == '+' || tmp[i] == '-'))
-			return 0;
+	if (isChar(arg))
+		return 1;
+	if (arg.find('.') != std::string::npos || arg.find('e') != std::string::npos || arg.find('E') != std::string::npos)
+	{
+		if (arg.find('.') == std::string::npos)
+		{
+			for (size_t i = 0; i < arg.size() ; ++i) {
+				if ((i == 0 && (arg[0] == '+' && arg[0] == '-')) || (i == arg.size() - 1 && arg[i] == 'f'))
+					continue;
+				if ((isdigit(arg[i]))
+				|| (((arg[i] == 'E' || arg[i] == 'e') && (arg[i + 1] == '-' || arg[i + 1] == '+')) && (isdigit(arg[i + 2]))))
+				{
+					if ((arg[i] == 'E' || arg[i] == 'e'))
+						i += 2;
+					else
+						continue;
+				}
+				else
+					return 0;
+			}
+		}
+		else
+		{
+			for (size_t i = 0; i < arg.find('.'); ++i) {
+				if ((i == 0 && (arg[0] == '+' || arg[0] == '-')) || isdigit(arg[i]))
+					continue;
+				else
+					return 0;
+			}
+			for (size_t i = arg.find('.') + 1; i < arg.size() ; ++i) {
+				if ((i == 0 && (arg[0] == '+' && arg[0] == '-')) || (i == arg.size() - 1 && arg[i] == 'f'))
+					continue;
+				if ((isdigit(arg[i]))
+				|| (((arg[i] == 'E' || arg[i] == 'e') && (arg[i + 1] == '-' || arg[i + 1] == '+')) && (isdigit(arg[i + 2]))))
+				{
+					if ((arg[i] == 'E' || arg[i] == 'e'))
+						i += 2;
+					else
+						continue;
+				}
+				else
+					return 0;
+			}
+		}
+		if ((isFloat(arg) || isDouble(arg)))
+			return 1;
 	}
-	return 1;
+	else if (isInt(arg))
+		return 1;
+	return 0;
 }
 
-int ft_float(const std::string &tmp){
-	if (tmp.size() != 1)
-    {
-        if ((!(tmp[tmp.find('f') + 1]) && isdigit(tmp[tmp.find('f') - 1])) &&  ((tmp.find('.') == std::string::npos) || (tmp.find('.') != std::string::npos && tmp.find('e') == std::string::npos)))
-        {
-            for (int i = 0; tmp[i];i++)
-            {
-                if (tmp[i] != 'f' && tmp[i] != '-' && tmp[i] != '+' && tmp[i] != '.' && tmp[i] != 'e' && tmp[i] != 'E'  && !isdigit(tmp[i]))
-                    return (0);
-            }
-            return (1);
-        }
-    }
-    return (0);
-}
-
-int ft_double(const std::string &tmp){
-	if (tmp.size() != 1)
-    {
-        if (tmp[tmp.find('.') + 1] && tmp[tmp.find('.') - 1] && tmp.find('f') == std::string::npos)
-        {
-            for (int i = 0; tmp[i];i++)
-            {
-                if (tmp[i] != '.' && tmp[i] && tmp[i] != '-' && tmp[i] != '+' && tmp[i] != 'e' && tmp[i] != 'E'  && !isdigit(tmp[i]))
-                    return (0);
-            }
-            return (1);
-        }
-    }
-    return (0);
-}

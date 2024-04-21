@@ -1,16 +1,3 @@
-/*
-printliterals ++
-float and double literals++
-isint ++
-ischar ++
-isfloat ++
-isdouble ++
-find type
-convert++
-
-char " ~ " -> impossible printlemeli
-
-*/
 
 #include "ScalarConverter.hpp"
 

@@ -1,0 +1,11 @@
+----------------*************----------------
+
+dynamic_cast : güvenli bir şekilde nesne dönüşümlerini gerçekleştirir.
+bir işaretçinin veya referansın dinamik türünü kontrol eder ve uygun şekilde dönüşüm yapar. 
+Bu, özellikle taban sınıf işaretçilerini veya referanslarını türetilmiş sınıfların işaretçilerine
+    veya referanslarına dönüştürmek için kullanışlıdır.
+sadece polimorfik türler arasında dönüşüm yapabilir.
+Yani, en az bir sanal fonksiyonu olan sınıflar arasında dönüşüm yapılabilir.
+
+bir üst sınıf işaretçisini veya referansını alt sınıf işaretçisine veya 
+referansına dönüştürmek için dynamic_cast kullanılabilir:

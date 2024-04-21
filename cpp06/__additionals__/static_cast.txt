@@ -1,0 +1,39 @@
+--------------*******************---------------
+
+
+donusumun guvenligini saglamaya yardimci olmak icin run-time turu kontrol yoktur.
+
+1.static_cast: Bu operatör, genellikle güvenli ve standart dönüşümler için kullanılır.
+Örneğin, tamsayıları farklı boyutlara dönüştürmek veya türe özel dönüşümleri gerçekleştirmek için kullanılabilir.
+
+
+2.dynamic_cast: Bu operatör, polimorfik türler arasında dönüşüm yapmak için kullanılır.
+Yalnızca dinamik tür bilgisi olan (örneğin, sanal fonksiyonları olan) sınıflar arasında dönüşüm yapılabilir.
+
+3.reinterpret_cast: Bu operatör, genellikle türler arasında güvenli olmayan dönüşümler yapmak için kullanılır.
+Bellek adreslerini veya farklı türler arasında doğrudan dönüşümler yapmak için kullanılabilir.
+
+4.const_cast: Bu operatör, const niteliğini ekleyebilir veya kaldırabilir.
+Genellikle const olan bir nesneyi geçici olarak değiştirilebilir hale getirmek için kullanılır.
+
+
+SHORT NOTES:
+
+FOR static_cast"
+    guvenli ve standart donusumler icin kullanilir.
+    tur uyumlulugu olan donusumler icin kullanilir.(exp: int -> float)
+
+FOR dynamic_cast"
+    polimorfik turler arasinda guvenli donusum yapabilmek icin kullanilir.
+    Yalnızca dinamik tur bilgisine(sanal fonksiyonları olan siniflar) sahip olan turler arasinda donusum yapar.
+    fail'larsa null veya 0 dondurur.
+    dinamik donusum yapabilmek icin, siniflar arasinda en az bir sanal fonksiyon bulunmalidir.
+
+FOR reinterpret_cast"
+    genellikle tur guvenligini saglamayan islemlerde kullanilir.
+    ozellikle bellek adreslerini veya farkli turler arasinda dogrudan donusumleri gerceklestirmek icin kullanilir.
+    programcinin, donusumun guvenli veya dogru oldugundan emin olmasi gerekir.
+
+FOR const_cast"
+    const niteligini ekleyebilir veya cikartabilir.
+    yanlis kullanim programin davranisini tanimsiz hale getirebilir.

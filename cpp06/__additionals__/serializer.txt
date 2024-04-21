@@ -1,0 +1,9 @@
+---------------***************------------------
+
+search:
+    uintptr_t
+    reinterpret 
+
+explanation about somethingss:
+    reinterpret -> reinterpret_cast genellikle düşük seviyeli işlemlerde kullanılır, 
+        özellikle bellek adreslerini veya bellek bloklarını farklı türlere dönüştürmek için.

@@ -3,17 +3,17 @@
 #include <iostream>
 #include <stdint.h>
 
-typedef struct Data{
-    float a, b;
-};
+typedef struct{
+		float a;
+}Data;
 
 class Serializer{
-    private:
+	public:
 		Serializer();
 		~Serializer();
 		Serializer(const Serializer& copy);
 		Serializer &operator=(const Serializer& copy);
-    public:
-        static uintptr_t serialize(Data* ptr);
-        static Data* deserialize(uintptr_t raw);
+	
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 };
