@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <exception>
+#include <string>
 
 
 template <typename T> class Array{
@@ -21,7 +22,7 @@ template <typename T> class Array{
 		};
 
 		Array(const Array& copy){
-			this->array = new T[copy.arraySize];
+			this->array = new T[copy.size()];
 			this->arraySize = copy.size();
         	for (unsigned int i = 0; i < copy.size(); i++)
             	array[i] = copy.array[i];
@@ -34,11 +35,11 @@ template <typename T> class Array{
 					delete[] array;
 				array = new T[copy.arraySize];
 				arraySize = copy.arraySize;
-				for (int i = 0; i < copy.len(); i++)
+				for (unsigned int i = 0; i < copy.size(); i++)
 					array[i] = copy.array[i];
 			}    
     		return *this;
-		}; // deepcopy
+		};
 
 		~Array(){
 			delete [] this->array;

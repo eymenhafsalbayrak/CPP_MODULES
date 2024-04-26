@@ -2,6 +2,25 @@
 
 int main() 
 {
+    int * a = new int();
+    std::cout << *a << std::endl;
+    {
+        Array<int> arr1(5);
+        for (int i = 1; i < 5; ++i) {
+            arr1[i] = i * 11;
+        }
+        Array<int> arr2;
+        arr2 = arr1;
+
+
+        std::cout << "before arr1[0] = " << arr1[1] << std::endl;
+        arr2[1] = 10;
+
+        std::cout << "after arr1[0] = " << arr1[1] << std::endl;
+
+    }
+        std::cout << "-----------------------------------" << std::endl;
+
     {
         try{
         
