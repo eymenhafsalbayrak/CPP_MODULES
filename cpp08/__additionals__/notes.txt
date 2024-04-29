@@ -1,0 +1,12 @@
+-----------------***************--------------
+
+STL (STANDARD TEMPLATE LIBRARY)
+
+-> collection of algorithms, data structures, and other components that can be used to simplify the development of C++ programs.
+-> The STL provides a range of containers, such as vectors, lists, and maps, as well as algorithms for searching, 
+    sorting and manipulating data.
+-> STL'nin en önemli faydalarından biri, farklı veri türlerine uygulanabilecek genel, yeniden kullanılabilir kod yazmanın bir yolunu sağlamasıdır.
+    Bu, bir kez bir algoritma yazabileceğiniz ve daha sonra her tür için ayrı kod yazmak zorunda kalmadan farklı veri türleriyle kullanabileceğiniz anlamına gelir.
+
+-> Containers: vector, list, map, set, and stack, which can be used to store and manipulate data.
+-> Algorithms: sort, find, and binary_search, which can be used to manipulate data stored in containers.
