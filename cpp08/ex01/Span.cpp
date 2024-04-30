@@ -61,3 +61,7 @@ void Span::printNumbers() {
     }
     std::cout << std::endl;
 }
+
+void Span::addMore(std::vector<int> tmp){
+    this->intArray.insert(this->intArray.end(), tmp.begin(), tmp.end());
+}

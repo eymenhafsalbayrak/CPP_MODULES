@@ -26,7 +26,7 @@ int main(){
 		std::cerr << e.what() << '\n';
 	}
 	
-	std::cout << "-"<< std::endl;
+	std::cout << "~~~~~~~~~~~~~~~~~~"<< std::endl;
 
 	try
 	{
@@ -44,6 +44,29 @@ int main(){
 		std::cerr << e.what() << '\n';
 	}
 
+	std::cout << "~~~~~~~~~~~~~~~~~~"<< std::endl;
 
+	try
+        {
+            int len = 4;
+            Span sp = Span(len);
+
+
+            std::vector<int> nums;
+            std::srand(time(0));
+
+            for (int i = 0; i < len; ++i) {
+                nums.push_back(std::rand());
+            }
+
+            sp.addMore(nums);
+            std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp.longestSpan() << std::endl;
+            sp.printNumbers();
+
+        }
+        catch (std::exception &e){
+            std::cout << e.what() << std::endl;
+        }
 	return 0;
 }

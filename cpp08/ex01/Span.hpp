@@ -23,4 +23,6 @@
 		int shortestSpan() const;
 		int longestSpan() const;
 		void printNumbers() ;
+
+		void addMore(std::vector<int> tmp);
 };
