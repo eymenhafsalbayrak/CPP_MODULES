@@ -2,8 +2,6 @@
 
 int main(){
 
-	std::vector<int> numbers;
-	std::vector<int> copySortedNumbers;
 
 	try
 	{
@@ -45,28 +43,24 @@ int main(){
 	}
 
 	std::cout << "~~~~~~~~~~~~~~~~~~"<< std::endl;
-
+	
 	try
-        {
-            int len = 4;
-            Span sp = Span(len);
-
-
-            std::vector<int> nums;
-            std::srand(time(0));
-
-            for (int i = 0; i < len; ++i) {
-                nums.push_back(std::rand());
-            }
-
-            sp.addMore(nums);
-            std::cout << sp.shortestSpan() << std::endl;
-            std::cout << sp.longestSpan() << std::endl;
-            sp.printNumbers();
-
-        }
-        catch (std::exception &e){
-            std::cout << e.what() << std::endl;
-        }
+	{
+		std::vector<int> nums;
+		srand(time(0));
+		for (size_t i = 0; i < len; ++i) {
+			nums.push_back(rand());
+		}
+		Span sp = Span(len);
+		sp.fill(nums.begin(), nums.end());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+		
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	return 0;
 }

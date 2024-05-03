@@ -2,11 +2,14 @@
 #include <vector>
 #include <cstdlib>
 
+#define len 10000
 
+typedef std::vector<int>::iterator iter;
 /*
 
 	int array'de max ve min degerleri bulup (aralarindaki span)
 */
+
  class Span{
 	private:
 		unsigned int maxN;
@@ -24,5 +27,5 @@
 		int longestSpan() const;
 		void printNumbers() ;
 
-		void addMore(std::vector<int> tmp);
+		void fill(iter begin, iter end);
 };

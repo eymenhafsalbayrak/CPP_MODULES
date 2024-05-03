@@ -23,5 +23,24 @@ int main()
 	++it;
 	}
 	std::stack<int> s(mstack);
+
+	std::cout << std::endl;
+
+	{
+
+		MutantStack<int> mstack;
+
+		for (size_t i = 1; i <= 5; ++i) {
+			mstack.push(i*i);
+		}
+
+		MutantStack<int>::reverse_iterator it = mstack.rbegin();
+		MutantStack<int>::reverse_iterator ite = mstack.rend();
+    
+		for (;it != ite; it++) {
+			std::cout << *it << std::endl;
+		}
+
+	}
 	return 0;
 }

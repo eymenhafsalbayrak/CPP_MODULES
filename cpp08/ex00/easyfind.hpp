@@ -11,15 +11,13 @@ class NumberNotFound: public std::exception{
     }
 };
 
-template <typename T> 
-int easyfind(T &type, int number){ // find index in container
+template<typename T>
+bool easyfind(T container, int number)
+{
+    typename T::iterator it;
 
-	int find = 0;
-
-	for(typename T::iterator i = type.begin(); i != type.end(); ++i, find++){
-		
-		if(*i == number)
-			return (find);
-	}
-	throw NumberNotFound();
+    it = std::find(container.begin(), container.end(), number);
+    if (it != container.end())
+        return true;
+    throw NumberNotFound();
 }

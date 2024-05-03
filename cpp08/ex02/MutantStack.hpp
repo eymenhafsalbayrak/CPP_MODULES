@@ -2,8 +2,6 @@
 
 #include <iostream>
 #include <stack>
-#include <deque>
-#include <list>
 
 
 template<typename T>
@@ -18,14 +16,6 @@ class MutantStack : public std::stack<T>{
 			*this->std::stack<T> = std::stack<T>(copy);
 		};
 		~MutantStack(){};
-
-		// typedef typename std::deque<T>::iterator iterator;
-		// iterator begin(){
-		//     return(this->c.begin());
-		// }
-		// iterator end(){
-		//     return (this->c.end());
-		// }
 
 		// iterator
 		typedef typename std::stack<T>::container_type::iterator iterator;
