@@ -12,12 +12,18 @@ class NumberNotFound: public std::exception{
 };
 
 template<typename T>
-bool easyfind(T container, int number)
+int easyfind(T container, int number)
 {
     typename T::iterator it;
 
     it = std::find(container.begin(), container.end(), number);
-    if (it != container.end())
-        return true;
-    throw NumberNotFound();
+    if (it == container.end())
+        throw NumberNotFound();
+    int j = 0;
+    for (std::vector<int>::iterator i = container.begin(); i != container.end(); ++i, j++) {
+        if (*i == number) {
+            return j;
+        }
+    }
+    return true;
 }
