@@ -2,9 +2,14 @@
 
 int main(int ac, char** av){
 
+    (void)av;
     BitcoinExchange bitcoin;
     if(ac != 2){
         bitcoin.errorHandle("this program takes 2 argument");
     }
-    bitcoin.printZimbirti(av[1]);
+
+    bitcoin.readData();
+
+
+    return 0;
 }
