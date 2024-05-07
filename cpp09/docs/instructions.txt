@@ -1,0 +1,19 @@
+not:
+data.csv std::map
+input.txt | parse
+
+->data.csv ve input.txt dosyalarini oku ++ 
+
+->input.txt icin : error handle : (int_max - int_min && date kontrol && "|" kontrol && 
+    0 ve 1000 arasi && positive numbers)
+
+->iki dosya icinde date | value degerlerinin int haline cevirilmesi
+
+->eger input.txt kontrollerden gecebiliyorsa,
+input.txt'nin date kismi data'nin(map'in key kismi) date kismi ile uyuyorsa ,
+data'nin value'sunu alip input'un value'su ile carp.
+
+
+|
+digit
+| deger var mi

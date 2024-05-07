@@ -6,13 +6,16 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <exception>
 
-typedef std::map<std::string, double>::iterator dataIterator;
+typedef std::map<int, double>::iterator dataIterator;
 
 class BitcoinExchange{
 
     private:
-        std::map<std::string, double> data;
+        std::map<int, double> data;
+        int combined_date;
+
     public:
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange& copy);
@@ -22,5 +25,10 @@ class BitcoinExchange{
         void errorHandle(std::string error);
 
         void readData(); // data.csv
-        void printMap(std::map<std::string, double> &data);
+        void readInput(const char* inputFile);
+        void printMap(std::map<int, double> &data);
+        void startBtc(const char* inputFile);
+        bool checkInput(std::string firstPart, double secondPart);
+
+        void compareAndProcess(std::string firstPart, double secondPart);
 };

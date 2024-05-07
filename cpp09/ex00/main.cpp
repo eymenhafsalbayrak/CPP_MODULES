@@ -8,7 +8,7 @@ int main(int ac, char** av){
         bitcoin.errorHandle("this program takes 2 argument");
     }
 
-    bitcoin.readData();
+    bitcoin.startBtc(av[1]);
 
 
     return 0;
