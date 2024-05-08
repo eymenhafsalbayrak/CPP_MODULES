@@ -28,7 +28,9 @@ class BitcoinExchange{
         void readInput(const char* inputFile);
         void printMap(std::map<int, double> &data);
         void startBtc(const char* inputFile);
-        bool checkInput(std::string firstPart, double secondPart);
+        bool checkInput(std::string firstPart, double secondPart, std::string input);
 
         void compareAndProcess(std::string firstPart, double secondPart);
+
+        bool isNumber(std::string s);
 };

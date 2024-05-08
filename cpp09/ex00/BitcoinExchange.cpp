@@ -7,7 +7,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy) {
 }
 
 BitcoinExchange BitcoinExchange::operator=(const BitcoinExchange& copy) {
-	(void)copy; 
+	this->data = copy.data;
 	return *this; 
 }
 
@@ -47,9 +47,7 @@ void BitcoinExchange::readData() {
 			int d_month = atoi(data_month.c_str());
 			int d_day = atoi(data_day.c_str());
 
-			// std::cout << d_year << std::endl;
 			int data_combined = d_year * 10000 + d_month * 100 + d_day;
-				// std::cout << data_combined << std::endl;
 			if(std::getline(ss, value)){
 
 				data[data_combined] = atof(value.c_str());
@@ -60,8 +58,47 @@ void BitcoinExchange::readData() {
 	// printMap(data);
 	dataFile.close();
 }
-bool BitcoinExchange::checkInput(std::string firstPart, double secondPart){
-	
+
+bool BitcoinExchange::isNumber(std::string s){
+	// std::cout << s << std::endl;
+	int flag = 0;
+	for (std::string::size_type i = 0; i < s.length(); ++i){
+		if (!isdigit(s[i]) && s[i] != '.') {
+            return 1;
+        }
+		else if (s[i] == '.') {
+			if (flag)
+				return 1;
+			flag++;
+		}
+ 	}
+    return 0;
+}
+
+bool BitcoinExchange::checkInput(std::string firstPart, double secondPart, std::string input){
+	char separator = '|';
+	size_t pipe = input.find(separator);
+
+	size_t after_pipe = input.find_first_not_of(" ", pipe + 1);
+
+	std::string after_pipe_number = input.substr(pipe + 2);
+
+	if(pipe == std::string::npos){
+		std::cout << "Error: invalid format" << std::endl;
+		return 0;
+	}
+	else if(pipe != std::string::npos && after_pipe == std::string::npos){
+		std::cout << "Error: must be value after separator" << std::endl;
+		return 0;
+	}
+	else if(after_pipe != std::string::npos && isNumber(after_pipe_number)){
+		std::cout << "Error: must be number after separator" << std::endl;
+		return 0;
+	}
+	// if (secondPart == INFINITY) {
+	// 	std::cout << "Error: must not be empty" << std::endl;
+	// 	return 0;
+	// }
 	std::istringstream iss(firstPart);
 	std::string year_str, month_str, day_str;
 	std::getline(iss, year_str, '-');
@@ -85,8 +122,10 @@ bool BitcoinExchange::checkInput(std::string firstPart, double secondPart){
 		return 0;
 	}
 
-	// if(!is(secondPart))
-	// 	std::cout << "Error: value is not a digit" << std::endl;
+	if(!(typeid(double) == typeid(secondPart))){
+		std::cout << "Error: value is not a digit" << std::endl;
+		return 0;
+	}
 	else if(secondPart > 1000){
 		std::cout << "Error: too large a number" << std::endl;
 		return 0;
@@ -96,15 +135,8 @@ bool BitcoinExchange::checkInput(std::string firstPart, double secondPart){
 		return 0;
 	}
 
-
-	// std::cout << "Year: " << year << "  ";
-    // std::cout << "Month: " << month << "  ";
-    // std::cout << "Day: " << day << std::endl;
-	// std::cout << std::endl;
-
 	this->combined_date = year * 10000 + month * 100 + day;
 	return 1;
-	// std::cout << combined_date << std::endl;
 }
 
 void BitcoinExchange::readInput(const char* inputFile){
@@ -117,20 +149,16 @@ void BitcoinExchange::readInput(const char* inputFile){
 	if(!(input == "date | value"))
 		errorHandle("invalid file format");
 
-	// std::getline(inputfile, input);
 	while(std::getline(inputfile, input)){
 
 		std::istringstream iss(input);
 		std::string firstPart;
+		// double secondPart = INFINITY;
 		double secondPart;
-		// char separator;
 
 		std::getline(iss, firstPart, '|');
 		iss >> secondPart;
-
-		// std::cout << "first part: " << firstPart << "  ";
-		// std::cout << "second part: " << secondPart << std::endl;
-		bool res = checkInput(firstPart, secondPart);
+		bool res = checkInput(firstPart, secondPart, input);
 		if (res)
 			compareAndProcess(firstPart,secondPart);
 	}
@@ -164,7 +192,6 @@ void BitcoinExchange::printMap(std::map<int, double> &data){
 }
 
 void BitcoinExchange::startBtc(const char* inputFile){
-	// (void)inputFile;
 	readData();
 	readInput(inputFile);
 }
