@@ -2,7 +2,27 @@ note:
 
 vector and list
 
-av[1] -> must be positive int
+arg list'e ve vector'e doldur ++ 
+av[1] -> must be positive int (duplicate) error();
+Before: bastir. ++ 
+first:
+    start timer.
+    algo(list)
+    end timer.
+    timer 'i savele
+
+second:
+    start timer.
+    algo(vector)
+    end timer.
+    timer 'i savele
+After: bastir(list || vector)
+list:
+Time to process a range of {list.size()} elements with std::[..] : {list.timer} us
+vector:
+Time to process a range of {vector.size()} elements with std::[..] : {vector.timer} us
+
+
 
 merge-insert sort (Ford-Johnson algorithm)
 ->divide-conquer
