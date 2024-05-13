@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
 
 #include <iostream>
 #include <stdlib.h>
@@ -33,4 +34,7 @@ class BitcoinExchange{
         void compareAndProcess(std::string firstPart, double secondPart);
 
         bool isNumber(std::string s);
+        bool isAlpha(std::string s);
 };
+
+#endif

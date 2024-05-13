@@ -17,3 +17,10 @@ data'nin value'sunu alip input'un value'su ile carp. ++
 | -> error degistir ++
 digit ++
 | deger var mi ++
+
+2011-02-29 -> error
+
+iki tarih arasi bosluk -> error
+
+tarihten sonra string -> error -> 2011-03-26 asd | 3
+

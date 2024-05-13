@@ -60,7 +60,6 @@ void BitcoinExchange::readData() {
 }
 
 bool BitcoinExchange::isNumber(std::string s){
-	// std::cout << s << std::endl;
 	int flag = 0;
 	for (std::string::size_type i = 0; i < s.length(); ++i){
 		if (!isdigit(s[i]) && s[i] != '.') {
@@ -74,16 +73,30 @@ bool BitcoinExchange::isNumber(std::string s){
  	}
     return 0;
 }
+bool BitcoinExchange::isAlpha(std::string s){
+	for (std::string::size_type i = 0; i < s.length(); ++i){
+		if(isalpha(s[i])){
+			return 1;
+		}
+	}
+	return 0;
+}
 
 bool BitcoinExchange::checkInput(std::string firstPart, double secondPart, std::string input){
 	char separator = '|';
 	size_t pipe = input.find(separator);
 
+	std::string before_pipe = input.substr(0, input.find('|'));
+
 	size_t after_pipe = input.find_first_not_of(" ", pipe + 1);
 
 	std::string after_pipe_number = input.substr(pipe + 2);
 
-	if(pipe == std::string::npos){
+	if(isAlpha(before_pipe)){
+		std::cout << "Error: cannot be character after date" << std::endl;
+		return 0;
+	}
+ 	else if(pipe == std::string::npos){
 		std::cout << "Error: invalid format" << std::endl;
 		return 0;
 	}
@@ -95,10 +108,8 @@ bool BitcoinExchange::checkInput(std::string firstPart, double secondPart, std::
 		std::cout << "Error: must be number after separator" << std::endl;
 		return 0;
 	}
-	// if (secondPart == INFINITY) {
-	// 	std::cout << "Error: must not be empty" << std::endl;
-	// 	return 0;
-	// }
+
+
 	std::istringstream iss(firstPart);
 	std::string year_str, month_str, day_str;
 	std::getline(iss, year_str, '-');
@@ -148,19 +159,25 @@ void BitcoinExchange::readInput(const char* inputFile){
 	std::getline(inputfile, input);
 	if(!(input == "date | value"))
 		errorHandle("invalid file format");
-
 	while(std::getline(inputfile, input)){
-
-		std::istringstream iss(input);
-		std::string firstPart;
-		// double secondPart = INFINITY;
-		double secondPart;
-
-		std::getline(iss, firstPart, '|');
-		iss >> secondPart;
-		bool res = checkInput(firstPart, secondPart, input);
-		if (res)
-			compareAndProcess(firstPart,secondPart);
+		try
+		{
+			std::istringstream iss(input);
+			std::string firstPart;
+			double secondPart;
+			std::getline(iss, firstPart, '|');
+			
+			iss >> secondPart;
+			bool res = checkInput(firstPart, secondPart, input);
+			if (res)
+				compareAndProcess(firstPart,secondPart);
+		}
+		catch(const std::exception& e)
+		{
+			if(e.what())
+				std::cout << "Error: cannot be empty line" << std::endl;
+		}
+		
 	}
 
 }

@@ -1,0 +1,30 @@
+note:
+
+vector and list
+
+av[1] -> must be positive int
+
+merge-insert sort (Ford-Johnson algorithm)
+->divide-conquer
+->recursively
+-> It works by recursively dividing the input array into smaller subarrays 
+and sorting those subarrays then merging them back together to obtain the sorted array.
+->divide the array into two halves, sort each half, and then merge the sorted halves back together.
+This process is repeated until the entire array is sorted.
+
+DIVIDE: Divide the list or array recursively into two halves until it can no more be divided.
+
+CONQUER: Each subarray is sorted individually using the merge sort algorithm.
+
+MERGE: The sorted subarrays are merged back together in sorted order. 
+The process continues until all elements from both subarrays have been merged.
+
+3000 different number
+
+"-1" "2" -> error
+
+output: ./PmergeMe 3 5 9 7 4
+Before: 3 5 9 7 4
+After: 3 4 5 7 9
+Time to process a range of 5 elements with std::[..] : 0.00031 us
+Time to process a range of 5 elements with std::[..] : 0.00014 us

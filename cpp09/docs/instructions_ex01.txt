@@ -1,3 +1,19 @@
 not:
 RPN std::stack
 
+stack bos
+
+3 4 + 2 * 1 +
+
+3 ve 4 push_back to stack until see the operation
+after saw the operation pop out of stack do the thing ;)
+then result push_back to the stack
+
+(1 + 1) = error
+
+"4 4 + 2" error
+
+"*" error
+
+"12 3 + " error
+
