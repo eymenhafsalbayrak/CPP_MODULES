@@ -200,7 +200,7 @@ void BitcoinExchange::compareAndProcess(std::string firstPart, double secondPart
 		if(it->first >= combined_date){
 			if(it->first != combined_date){
 				double res = (--it)->second * secondPart;
-				if(!(res < 0 || res > 1000))
+				// if(!(res < 0 || res > 1000))
 					std::cout << firstPart << " => " << secondPart << " = " << res << std::endl;
 			}
 			else
